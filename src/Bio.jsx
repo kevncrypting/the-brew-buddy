@@ -2,9 +2,7 @@ import React from "react";
 
 const Bio = () => {
   return (
-    <>
-      <Link to={`/bio`}>Bio</Link>
-    </>
+      <div>Bio</div>
   );
 };
 
