@@ -6,7 +6,8 @@ const Book = () => {
   useEffect(() => {
     fetch(`https://api.pexels.com/v1/search?query=coffee&per_page=15`, {
       headers: {
-        Authorization: `${process.env.PEXELS_API_KEY}`,
+        'Access-Control-Allow-Origin': 'https://the-brew-buddy.onrender.com/',
+        'Authorization': `${process.env.PEXELS_API_KEY}`,
       },
     })
       .then((response) => response.json())
