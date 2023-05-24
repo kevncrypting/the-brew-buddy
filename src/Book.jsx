@@ -1,19 +1,21 @@
 import { useEffect, useState } from "react";
-import { createClient } from "pexels";
-
+import Button from "./Button";
+import BookEntry from "./BookEntry";
+import { NavLink } from "react-router-dom";
+// import { createClient } from "pexels";
 
 const Book = () => {
-    const [imageGallery, setImageGallery] = useState([]);
+  // const [imageGallery, setImageGallery] = useState([]);
 
-    const client = createClient(
-        `${process.env.REACT_APP_PEXELS_API_KEY}`
-    );
+  // const client = createClient(
+  //     `${process.env.REACT_APP_PEXELS_API_KEY}`
+  // );
 
-    const query = "Coffee";
-    
-    client.photos.search({ query, per_page: 5 }).then((photos) => {
-      setImageGallery(photos.photos);
-    });
+  // const query = "Coffee";
+
+  // client.photos.search({ query, per_page: 5 }).then((photos) => {
+  //   setImageGallery(photos.photos);
+  // });
 
   //   useEffect(() => {
   //     fetch(`https://api.pexels.com/v1/search?query=coffee&per_page=15`, {
@@ -28,15 +30,17 @@ const Book = () => {
   //       });
   //   });
 
-  const changeImage = (event) => {
-    event.preventDefault();
-    console.log(imageGallery);
-  };
+  //   const changeImage = (event) => {
+  //     event.preventDefault();
+  //     console.log(imageGallery);
+  //   };
 
   return (
     <>
-      <div>Book</div>
-      <button onClick={changeImage}>Refresh Image</button>
+      <NavLink to="/book/new">
+        <Button buttonName="add a thought" />
+      </NavLink>
+      {/* <button onClick={changeImage}>Refresh Image</button> */}
       <a href="https://www.pexels.com">Photos provided by Pexels</a>
     </>
   );
