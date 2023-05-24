@@ -1,47 +1,43 @@
 import { useState } from "react";
 
-const NewBookEntry = ({ addJournalEntry }) => {
-  const [journalEntry, setJournalEntry] = useState({ title: "", thoughts: "" });
+const NewBookEntry = () => {
+  const [title, setTitle] = useState("");
+  const [thoughts, setThoughts] = useState("");
 
-  const handleChange = (event) => {
-    setJournalEntry({
-      ...journalEntry,
-      [event.target.name]: event.target.value,
-    });
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    addJournalEntry(journalEntry);
-    setJournalEntry({ title: "", thoughts: "" });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const bookEntry = { title, thoughts };
+    console.log(bookEntry);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
+    <>
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col bg-brown-100 gap-3 px-3 py-6 rounded-xl"
+      >
+        <label>title</label>
         <input
+          required
           type="text"
-          name="title"
-          placeholder="Title"
-          value={journalEntry.title}
-          onChange={handleChange}
+          placeholder="enter title here..."
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className="p-3 bg-brown-50"
         />
-      </div>
-      <div>
-        <input
-          type="text"
-          name="thoughts"
-          placeholder="thought"
-          value={journalEntry.thoughts}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <button>
-            add journal entry
-        </button>
-      </div>
-    </form>
+        <label>thoughts</label>
+        <textarea
+          required
+          placeholder="enter thoughts here..."
+          value={thoughts}
+          onChange={(e) => setThoughts(e.target.value)}
+          className="p-3 bg-brown-50"
+        ></textarea>
+        <button>add journal entry</button>
+        <p>{title}</p>
+        <p>{thoughts}</p>
+      </form>
+    </>
   );
 };
 
