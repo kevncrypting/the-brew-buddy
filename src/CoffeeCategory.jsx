@@ -1,10 +1,15 @@
-const CoffeeCategory = ({ categoryTitle, categoryInfo }) => {
-  return (
-    <div className="border-b px-6 py-3">
-        <h3>{categoryTitle}</h3>
+const CoffeeCategory = ({ addClasses, categoryTitle, categoryInfo, onButtonClick }) => {
+    return (
+    <div className={`border-b px-6 py-3 ${addClasses}`}>
+      <h3 className="font-bold">{categoryTitle}</h3>
+      <div className="flex justify-between">
         <span>{categoryInfo}</span>
+        <button onClick={onButtonClick} className="px-6 py-3 rounded-lg bg-brown-500 text-brown-50 hover:bg-brown-700 hover:drop-shadow">
+          Save Values
+        </button>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default CoffeeCategory
+export default CoffeeCategory;
