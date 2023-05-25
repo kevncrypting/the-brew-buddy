@@ -7,6 +7,8 @@ const NewBookEntry = () => {
   const [title, setTitle] = useState("");
   const [thoughts, setThoughts] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const [savedImageUrl, setSavedImageUrl] = useState("");
+  const [imageRefreshCounter, setImageRefreshCounter] = useState(0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,9 +17,14 @@ const NewBookEntry = () => {
     navigate("/book");
   };
 
-  const handleImageSave = () => {};
+  const handleImageSave = () => {
+    setSavedImageUrl(imageUrl);
+  };
 
-  const handleImageRefresh = () => {};
+  const handleImageRefresh = () => {
+    setImageRefreshCounter(imageRefreshCounter + 1);
+    console.log(`Image has been refreshed ${imageRefreshCounter} times`);
+  };
 
   useEffect(() => {
     fetch(`${url}cat?json=true`)
@@ -25,16 +32,16 @@ const NewBookEntry = () => {
       .then((data) => {
         setImageUrl(data.url);
       });
-  }, []);
+  }, [imageRefreshCounter]);
 
   return (
     <>
-      <h3>
+      <p>
         This was initially planned to produce a random coffee-related picture to
         be used as your journal entry thumbnail, but due to budget constraints
         the MVP was delivered with a free cat picture instead.
-      </h3>
-      <div className="flex justify-evenly bg-brown-100 mb-3 rounded-xl p-6">
+      </p>
+      <div className="flex justify-evenly bg-brown-100 mb-3 mt-3 rounded-xl p-6">
         <img
           src={url + imageUrl}
           alt="A cat picture"
@@ -42,13 +49,13 @@ const NewBookEntry = () => {
         />
         <div className="flex flex-col gap-3 justify-center">
           <button
-            onClick={handleImageSave}
+            onClick={() => handleImageSave()}
             className="text-xl px-6 py-3 rounded-lg bg-brown-500 text-brown-50 hover:bg-brown-700 hover:drop-shadow"
           >
             Save Thumbnail
           </button>
           <button
-            onClick={handleImageRefresh}
+            onClick={() => handleImageRefresh()}
             className="text-xl px-6 py-3 rounded-lg bg-brown-500 text-brown-50 hover:bg-brown-700 hover:drop-shadow"
           >
             New <span className="line-through">Coffee</span> Cat
@@ -86,15 +93,21 @@ const NewBookEntry = () => {
         >
           add journal entry
         </button>
+        <h3 className="border-t-2">Journal Preview</h3>
+        <div className="flex bg-brown-100 gap-3 px-3 py-6 rounded-xl">
+          {savedImageUrl !== "" ? (
+            <img
+              src={url + savedImageUrl}
+              alt="A cat picture"
+              className="object-cover h-48 w-48"
+            />
+          ) : null}
+          <section>
+            <h4 className="text-xl font-bold">{title}</h4>
+            <p>{thoughts}</p>
+          </section>
+        </div>
       </form>
-
-      <h3>Journal Preview</h3>
-      <div className="flex bg-brown-100 gap-3 px-3 py-6 rounded-xl">
-        <img src="" alt="" />
-        <section>
-
-        </section>
-      </div>
     </>
   );
 };
