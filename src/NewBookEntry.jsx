@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+let arrayOfBookEntries = [];
+
 const NewBookEntry = () => {
   const url = "https://cataas.com/";
   const navigate = useNavigate();
@@ -12,8 +14,17 @@ const NewBookEntry = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const bookEntry = { title, thoughts };
-    console.log(bookEntry);
+
+    let bookEntry = { title, thoughts, savedImageUrl };
+
+    arrayOfBookEntries.push(bookEntry);
+
+    localStorage.setItem(
+      "bookEntryHistory",
+      JSON.stringify(arrayOfBookEntries)
+    );
+
+    console.log(arrayOfBookEntries);
     navigate("/book");
   };
 
@@ -36,16 +47,17 @@ const NewBookEntry = () => {
 
   return (
     <>
-      <p>
+      <p className="bg-brown-50 p-6 rounded-3xl italic">
         This was initially planned to produce a random coffee-related picture to
         be used as your journal entry thumbnail, but due to budget constraints
-        the MVP was delivered with a free cat picture instead.
+        was substituted with a cat picture instead (until additional venture
+        capital can be secured).
       </p>
-      <div className="flex justify-evenly bg-brown-100 mb-3 mt-3 rounded-xl p-6">
+      <div className="flex justify-evenly bg-brown-100 mb-3 mt-3 rounded-xl p-6 gap-3">
         <img
           src={url + imageUrl}
           alt="A cat picture"
-          className="object-cover h-48 w-48"
+          className="object-cover h-48 w-48 rounded-xl"
         />
         <div className="flex flex-col gap-3 justify-center">
           <button
@@ -99,7 +111,7 @@ const NewBookEntry = () => {
             <img
               src={url + savedImageUrl}
               alt="A cat picture"
-              className="object-cover h-48 w-48"
+              className="object-cover h-48 w-48 rounded-xl"
             />
           ) : null}
           <section>
