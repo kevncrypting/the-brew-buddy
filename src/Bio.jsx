@@ -1,32 +1,48 @@
 const Bio = () => {
   return (
     <>
-      <div>Bio</div>
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam, qui
-        sint earum dignissimos ullam eveniet dolorem placeat harum repudiandae,
-        voluptate natus hic officiis temporibus praesentium. Itaque possimus qui
-        corrupti suscipit! Ipsam ex possimus nulla impedit quo esse, facere nemo
-        culpa, consequuntur distinctio placeat dignissimos amet dicta, dolores
-        eaque similique voluptate ea delectus recusandae! Nobis laborum deleniti
-        corrupti distinctio expedita itaque! Unde vero enim asperiores ratione,
-        nam deleniti, quas fugit facilis aliquam quis voluptate neque nihil
-        suscipit ipsa quaerat. Iusto laudantium deserunt officia modi velit
-        inventore blanditiis aspernatur iste ipsam voluptatum. Asperiores
-        voluptatem accusamus amet sit iure voluptatibus animi voluptate magni
-        ipsam. At eveniet quas fuga fugit harum? Nam amet, non sunt dignissimos
-        aspernatur quis expedita rem animi voluptatibus. Inventore, laborum. Ex
-        eligendi, commodi quo, consectetur ipsum nam cumque eum necessitatibus
-        exercitationem dolor ratione sequi in saepe, modi rem accusamus et earum
-        quae at dicta? Natus sunt ratione nihil quam dolorum! Illo placeat quo
-        error, deleniti quod cum laboriosam tenetur exercitationem saepe ut
-        consequatur eum sequi possimus aperiam voluptate fugiat. Optio ipsa
-        natus quos quia aspernatur modi deleniti officia voluptas velit. Dicta
-        officiis fugit possimus ut earum alias doloribus at veniam quaerat, vero
-        tenetur nam assumenda quasi tempora facere delectus eveniet explicabo
-        aperiam magnam repellendus nihil blanditiis nobis obcaecati cupiditate.
-        Laudantium.
-      </p>
+      <div className="flex flex-col items-center bg-brown-200 p-6 rounded-xl">
+        <div className="flex flex-col items-center gap-3">
+          <img
+            src={"/assets/headInCup.png"}
+            alt="Picture of a head in a coffee cup"
+            className="object-cover h-60 w-60 rounded-full drop-shadow-xl"
+          />
+          <p className="italic">Head-in-a-cup image courtesy of Zach, and indirectly our AI overlords</p>
+        </div>
+        <div className="flex flex-col p-6 gap-2">
+          <h3 className="font-bold">About the author</h3>
+          <p>
+            The Brew Buddy &trade; was created by{" "}
+            <span className="font-bold text-brown-900">Kevin Prachith</span> as
+            a way to spice up his morning brew routine while also providing a
+            space to practice morning mindfulness in the form of journaling.
+          </p>
+          <p>
+            You can find some of his other creations on his{" "}
+            <a
+              href="https://github.com/kevncrypting"
+              className="font-bold text-brown-900 hover:underline"
+            >
+              GitHub
+            </a>
+            , or follow his professional updates on his{" "}
+            <a
+              href="https://www.linkedin.com/in/tkprachith/"
+              className="font-bold text-brown-900 hover:underline"
+            >
+              LinkedIn
+            </a>
+            .
+          </p>
+
+          <p className="italic">
+            (This is Kevin writing this, and I don't know why I didn't just
+            refer to myself in first person from the beginning, but &#129335;)
+          </p>
+        </div>
+      </div>
+      <p></p>
     </>
   );
 };
