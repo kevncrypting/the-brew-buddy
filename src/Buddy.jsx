@@ -82,7 +82,7 @@ const Buddy = () => {
           />
         </div>
         <div className="p-6">
-          {" "}
+
           {/* This div conditionally displayed messages based on how many times the user has regenerated a new recipe */}
           {refreshCounter !== 0 ? (
             <span>You have refreshed the recipe {refreshCounter} times! </span>
@@ -115,8 +115,8 @@ const Buddy = () => {
           ) : null}
         </div>
         <button
-          onClick={handleClick}
-          className="text-2xl px-6 py-3 rounded-lg bg-brown-500 text-brown-50 hover:bg-brown-700 hover:drop-shadow"
+          disabled
+          className="text-2xl px-6 py-3 rounded-lg bg-brown-500 text-brown-50 hover:bg-red-800 hover:drop-shadow"
         >
           add a thought with this recipe
         </button>
